@@ -1,256 +1,219 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aetheris AI - Creative Suite & Avatar Studio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        dark: { 900: '#09090b', 800: '#121217', 700: '#1a1a24', 600: '#272735' },
-                        accent: { 500: '#6366f1', 600: '#4f46e5' }
-                    }
-                }
-            }
-        }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crayo Studio - AI Video & Clip Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { 900: '#09090b', 800: '#121217', 700: '#1a1a24', 600: '#272735' },
+                        accent: { 500: '#8b5cf6', 600: '#7c3aed' }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-dark-900 text-gray-100 font-sans min-h-screen flex flex-col antialiased selection:bg-accent-500 selection:text-white">
+<body class="bg-dark-900 text-gray-100 font-sans min-h-screen flex flex-col antialiased">
 
-    <!-- Header -->
-    <header class="border-b border-dark-700 bg-dark-800/80 backdrop-blur sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-            <div class="bg-gradient-to-tr from-indigo-500 to-purple-500 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/20">
-                <i data-lucide="sparkles" class="w-6 h-6"></i>
-            </div>
-            <div>
-                <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-200 to-indigo-400 bg-clip-text text-transparent">Aetheris AI</h1>
-                <p class="text-xs text-gray-400">Next-Gen Media & Avatar Studio</p>
-            </div>
-        </div>
-        <div class="flex items-center space-x-4">
-            <div class="bg-dark-700 px-3 py-1.5 rounded-full text-xs font-medium text-indigo-400 border border-indigo-500/20 flex items-center gap-1.5">
-                <i data-lucide="zap" class="w-3.5 h-3.5"></i> <span>145 Credits</span>
-            </div>
-            <div class="w-9 h-9 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center font-bold text-sm shadow">AG</div>
-        </div>
-    </header>
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-dark-700 bg-dark-800/80 backdrop-blur sticky top-0 z-50 px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="bg-accent-500 text-white p-2 rounded-xl font-bold flex items-center justify-center shadow-lg shadow-accent-500/30">
+                <i data-lucide="video" class="w-5 h-5"></i>
+            </div>
+            <div>
+                <span class="font-extrabold text-lg tracking-wide text-white">Crayo<span class="text-accent-500">.ai</span> Studio</span>
+                <span class="block text-xs text-gray-400">Next-Gen Video & Avatar Generator</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="bg-dark-700/60 border border-dark-600 px-3 py-1.5 rounded-full text-xs font-medium text-gray-300 flex items-center space-x-1.5">
+                <i data-lucide="zap" class="w-3.5 h-3.5 text-yellow-400"></i>
+                <span>145 Credits</span>
+            </div>
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-accent-500 to-purple-400 flex items-center justify-center font-bold text-sm shadow">CG</div>
+        </div>
+    </header>
 
-    <!-- Main Workspace -->
-    <main class="flex-1 max-w-7xl w-full mx-auto p-6 grid grid-cols-1 lg:grid-cols-4 gap-6">
-        
-        <!-- Sidebar Navigation / Controls -->
-        <div class="lg:col-span-1 space-y-6">
-            <div class="bg-dark-800 border border-dark-700 rounded-2xl p-4 shadow-xl">
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3 px-2">Creation Suite</h2>
-                <nav class="space-y-1">
-                    <button onclick="switchTab('studio')" id="nav-studio" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition bg-accent-600 text-white shadow-lg shadow-indigo-600/20">
-                        <i data-lucide="video" class="w-4 h-4"></i> Video & Image
-                    </button>
-                    <button onclick="switchTab('avatar')" id="nav-avatar" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition text-gray-400 hover:text-white hover:bg-dark-700">
-                        <i data-lucide="user-square" class="w-4 h-4"></i> Talking Avatars
-                    </button>
-                    <button onclick="switchTab('gallery')" id="nav-gallery" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition text-gray-400 hover:text-white hover:bg-dark-700">
-                        <i data-lucide="folder-kanban" class="w-4 h-4"></i> Project Gallery
-                    </button>
-                </nav>
-            </div>
+    <!-- Main Workspace -->
+    <div class="flex-1 flex flex-col md:flex-row">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 border-r border-dark-700 bg-dark-800/50 p-4 space-y-2">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-2">Studio Menu</div>
+            <button onclick="switchTab('generate')" id="nav-generate" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-accent-500 text-white font-medium text-sm transition shadow-lg shadow-accent-500/20">
+                <i data-lucide="wand-2" class="w-4 h-4"></i>
+                <span>Generate Video</span>
+            </button>
+            <button onclick="switchTab('upload')" id="nav-upload" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-dark-700 hover:text-white font-medium text-sm transition">
+                <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+                <span>Upload Media</span>
+            </button>
+            <button onclick="switchTab('templates')" id="nav-templates" class="w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-dark-700 hover:text-white font-medium text-sm transition">
+                <i data-lucide="layout-template" class="w-4 h-4"></i>
+                <span>Viral Templates</span>
+            </button>
+        </aside>
 
-            <!-- Dynamic Settings Panel -->
-            <div id="settings-panel" class="bg-dark-800 border border-dark-700 rounded-2xl p-4 shadow-xl space-y-4">
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-gray-400 px-2">Engine Settings</h2>
-                <div>
-                    <label class="text-xs text-gray-300 block mb-1">AI Backbone Model</label>
-                    <select id="model-select" class="w-full bg-dark-700 border border-dark-600 rounded-xl p-2.5 text-sm text-gray-200 focus:outline-none focus:border-indigo-500">
-                        <option>Seedance 2.5 (Native Sound)</option>
-                        <option>Google Veo 3.1</option>
-                        <option>Kling 4.0 Cinematic</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="text-xs text-gray-300 block mb-1">Aspect Ratio</label>
-                    <div class="grid grid-cols-3 gap-2 text-xs font-medium">
-                        <button class="bg-dark-700 border border-indigo-500 text-indigo-400 py-2 rounded-xl text-center">9:16</button>
-                        <button class="bg-dark-700 border border-dark-600 text-gray-400 py-2 rounded-xl text-center hover:border-gray-500">16:9</button>
-                        <button class="bg-dark-700 border border-dark-600 text-gray-400 py-2 rounded-xl text-center hover:border-gray-500">1:1</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Content Panel -->
+        <main class="flex-1 p-6 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Left Column: Controls & Uploads -->
+            <div class="space-y-6">
+                <!-- Generator Card -->
+                <div id="panel-generate" class="bg-dark-800 border border-dark-700 rounded-2xl p-5 shadow-xl space-y-4">
+                    <h2 class="text-md font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-accent-500"></i>
+                        <span>AI Script & Prompt Builder</span>
+                    </h2>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-400 mb-1">Enter your topic, script, or idea</label>
+                        <textarea id="video-prompt" rows="3" class="w-full bg-dark-900 border border-dark-700 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-accent-500 transition" placeholder="e.g., A cinematic motivational story about discipline and success..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-400 mb-1">Select Voice & Style Model</label>
+                        <select class="w-full bg-dark-900 border border-dark-700 rounded-xl p-2.5 text-sm text-gray-200 focus:outline-none focus:border-accent-500">
+                            <option>ElevenLabs Pro - Natural Warm (Male)</option>
+                            <option>ElevenLabs Pro - Energetic Narrator (Female)</option>
+                            <option>Cinematic Storyteller AI</option>
+                        </select>
+                    </div>
+                    <button onclick="triggerRender()" class="w-full bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-accent-500/2anchen">
+                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                        <span>Generate & Render Video</span>
+                    </button>
+                </div>
 
-        <!-- Center Workspace View -->
-        <div class="lg:col-span-3 space-y-6">
-            
-            <!-- STUDIO TAB -->
-            <div id="tab-studio" class="space-y-6">
-                <div class="bg-dark-800 border border-dark-700 rounded-2xl p-5 shadow-xl space-y-4">
-                    <h2 class="text-lg font-semibold flex items-center gap-2">
-                        <i data-lucide="wand-2" class="w-5 h-5 text-indigo-400"></i> Prompt & Generation Canvas
-                    </h2>
-                    <textarea id="prompt-input" rows="3" placeholder="Describe your cinematic shot, character wardrobe, and setting..." class="w-full bg-dark-700 border border-dark-600 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-indigo-500 resize-none"></textarea>
-                    
-                    <div class="flex items-center justify-between pt-2">
-                        <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <i data-lucide="info" class="w-4 h-4 text-indigo-400"></i> Generates in 1080p with cinematic lighting.
-                        </div>
-                        <button onclick="simulateGeneration('studio')" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-6 py-2.5 rounded-xl font-medium text-sm shadow-lg shadow-indigo-600/30 transition flex items-center gap-2">
-                            <i data-lucide="sparkles" class="w-4 h-4"></i> Generate Video
-                        </button>
-                    </div>
-                </div>
+                <!-- Upload Section -->
+                <div id="panel-upload" class="hidden bg-dark-800 border border-dark-700 rounded-2xl p-5 shadow-xl space-y-4">
+                    <h2 class="text-md font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="upload" class="w-4 h-4 text-accent-500"></i>
+                        <span>Upload Your Own Video</span>
+                    </h2>
+                    <div class="border-2 border-dashed border-dark-600 rounded-xl p-6 text-center hover:border-accent-500 transition cursor-pointer" onclick="document.getElementById('file-input').click()">
+                        <i data-lucide="cloud-upload" class="w-8 h-8 mx-auto text-gray-400 mb-2"></i>
+                        <p class="text-sm font-medium text-gray-300">Click to upload video or drag and drop</p>
+                        <p class="text-xs text-gray-500 mt-1">MP4, MOV, WebM up to 500MB</p>
+                        <input type="file" id="file-input" class="hidden" accept="video/*" onchange="handleFileUpload(event)">
+                    </div>
+                </div>
 
-                <!-- Preview Grid / Loading State -->
-                <div id="preview-container" class="bg-dark-800 border border-dark-700 rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center min-h-[350px] text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-dark-700 flex items-center justify-center text-gray-500 mb-4 border border-dark-600">
-                        <i data-lucide="film" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="font-medium text-gray-300">Your preview will appear here</h3>
-                    <p class="text-xs text-gray-500 mt-1">Enter your prompt above and hit generate to start your render.</p>
-                </div>
-            </div>
+                <!-- Templates Section -->
+                <div id="panel-templates" class="hidden bg-dark-800 border border-dark-700 rounded-2xl p-5 shadow-xl space-y-3">
+                    <h2 class="text-md font-bold text-white mb-2">Popular Viral Templates</h2>
+                    <div onclick="selectTemplatePreset('Tech Review Short')" class="p-3 rounded-xl bg-dark-900 border border-dark-700 hover:border-accent-500 cursor-pointer transition">
+                        <div class="font-bold text-sm text-white">📱 Tech Review Short</div>
+                        <p class="text-xs text-gray-400 mt-0.5">High-retention gadget spotlight with dynamic captions.</p>
+                    </div>
+                    <div onclick="selectTemplatePreset('Reddit Storytime')" class="p-3 rounded-xl bg-dark-900 border border-dark-700 hover:border-accent-500 cursor-pointer transition">
+                        <div class="font-bold text-sm text-white">🎮 Gameplay & Reddit Story</div>
+                        <p class="text-xs text-gray-400 mt-0.5">Subway Surfers background with engaging voiceover.</p>
+                    </div>
+                </div>
+            </div>
 
-            <!-- AVATAR STUDIO TAB -->
-            <div id="tab-avatar" class="space-y-6 hidden">
-                <div class="bg-dark-800 border border-dark-700 rounded-2xl p-5 shadow-xl space-y-4">
-                    <h2 class="text-lg font-semibold flex items-center gap-2">
-                        <i data-lucide="mic" class="w-5 h-5 text-indigo-400"></i> Lipsync Studio & AI Talking Avatars
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-xs text-gray-300 block mb-1">Select or Generate Presenter</label>
-                            <select class="w-full bg-dark-700 border border-dark-600 rounded-xl p-2.5 text-sm text-gray-200 focus:outline-none focus:border-indigo-500">
-                                <option>Elena (Professional Tech Presenter)</option>
-                                <option>Marcus (Casual Marketing Host)</option>
-                                <option>Custom Soul ID (Uploaded Portrait)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-xs text-gray-300 block mb-1">Voice & Language Model</label>
-                            <select class="w-full bg-dark-700 border border-dark-600 rounded-xl p-2.5 text-sm text-gray-200 focus:outline-none focus:border-indigo-500">
-                                <option>Eleven v4 Dialog (English - Natural Warm)</option>
-                                <option>Qwen Audio 3.0 TTS (Spanish - Localized)</option>
-                                <option>Cloned Voice Master</option>
-                            </select>
-                        </div>
-                    </div>
+            <!-- Right Column: Live Video Preview & Download -->
+            <div class="bg-dark-800 border border-dark-700 rounded-2xl p-5 shadow-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-md font-bold text-white flex items-center space-x-2">
+                            <i data-lucide="monitor" class="w-4 h-4 text-accent-500"></i>
+                            <span>Live Video Preview</span>
+                        </h2>
+                        <span id="status-badge" class="px-2.5 py-0.5 rounded-full text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 font-medium">Ready</span>
+                    </div>
 
-                    <div>
-                        <label class="text-xs text-gray-300 block mb-1">Presenter Script</label>
-                        <textarea rows="3" placeholder="Type what you want your talking avatar to say on camera..." class="w-full bg-dark-700 border border-dark-600 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-indigo-500 resize-none">Welcome to Aetheris AI. Build high-converting video ads and digital presenters in seconds without a camera crew.</textarea>
-                    </div>
+                    <!-- Video Player Container -->
+                    <div class="relative w-full aspect-[9/16] max-h-[420px] bg-dark-900 rounded-xl overflow-hidden border border-dark-700 flex items-center justify-center">
+                        <video id="preview-player" controls class="w-full h-full object-cover hidden">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Your browser does not support video.
+                        </video>
+                        <div id="preview-placeholder" class="text-center p-6 space-y-2">
+                            <i data-lucide="film" class="w-10 h-10 mx-auto text-gray-600"></i>
+                            <p class="text-sm text-gray-400 font-medium">Your generated video preview will appear here</p>
+                            <p class="text-xs text-gray-500">Click generate or upload a video to test preview</p>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="flex items-center justify-between pt-2">
-                        <div class="flex items-center gap-2 text-xs text-gray-400">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Frame-by-frame lip-sync locked
-                        </div>
-                        <button onclick="simulateGeneration('avatar')" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-6 py-2.5 rounded-xl font-medium text-sm shadow-lg shadow-indigo-600/30 transition flex items-center gap-2">
-                            <i data-lucide="play-circle" class="w-4 h-4"></i> Render Talking Avatar
-                        </button>
-                    </div>
-                </div>
+                <!-- Export / Download Action -->
+                <div class="mt-4 pt-4 border-t border-dark-700 flex space-x-3">
+                    <button onclick="downloadVideo()" class="flex-1 bg-dark-700 hover:bg-accent-500 text-white font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2 text-sm shadow">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>Download Video</span>
+                    </button>
+                </div>
+            </div>
 
-                <div id="avatar-preview-container" class="bg-dark-800 border border-dark-700 rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center min-h-[300px] text-center">
-                    <div class="w-16 h-16 rounded-2xl bg-dark-700 flex items-center justify-center text-gray-500 mb-4 border border-dark-600">
-                        <i data-lucide="user-check" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="font-medium text-gray-300">No talking avatar rendered yet</h3>
-                    <p class="text-xs text-gray-500 mt-1">Configure your presenter script above to render lip sync video.</p>
-                </div>
-            </div>
+        </main>
+    </div>
 
-            <!-- GALLERY TAB -->
-            <div id="tab-gallery" class="space-y-6 hidden">
-                <div class="bg-dark-800 border border-dark-700 rounded-2xl p-5 shadow-xl">
-                    <h2 class="text-lg font-semibold mb-4">Project History</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-dark-700 rounded-xl p-3 border border-dark-600 space-y-2">
-                            <div class="h-32 bg-dark-800 rounded-lg flex items-center justify-center text-gray-500"><i data-lucide="play" class="w-8 h-8"></i></div>
-                            <p class="text-xs font-medium text-gray-300">Product Promo_v1.mp4</p>
-                            <span class="text-[10px] bg-indigo-500/20 text-indigo-400 px-2 py-0.5 rounded">1080p • 12s</span>
-                        </div>
-                        <div class="bg-dark-700 rounded-xl p-3 border border-dark-600 space-y-2">
-                            <div class="h-32 bg-dark-800 rounded-lg flex items-center justify-center text-gray-500"><i data-lucide="user" class="w-8 h-8"></i></div>
-                            <p class="text-xs font-medium text-gray-300">Elena_Avatar_Speech.mp4</p>
-                            <span class="text-[10px] bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded">Lipsync • 40s</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Script Handlers for Interactivity -->
+    <script>
+        lucide.createIcons();
 
-        </div>
-    </main>
+        function switchTab(tab) {
+            ['generate', 'upload', 'templates'].forEach(t => {
+                document.getElementById('panel-' + t).classList.add('hidden');
+                document.getElementById('nav-' + t).className = "w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-dark-700 hover:text-white font-medium text-sm transition";
+            });
+            document.getElementById('panel-' + tab).classList.remove('hidden');
+            document.getElementById('nav-' + tab).className = "w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-accent-500 text-white font-medium text-sm transition shadow-lg shadow-accent-500/20";
+        }
 
-    <script>
-        lucide.createIcons();
+        function triggerRender() {
+            const badge = document.getElementById('status-badge');
+            badge.className = "px-2.5 py-0.5 rounded-full text-xs bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium animate-pulse";
+            badge.textContent = "Rendering...";
+            
+            setTimeout(() => {
+                badge.className = "px-2.5 py-0.5 rounded-full text-xs bg-green-500/10 text-green-400 border border-green-500/20 font-medium";
+                badge.textContent = "Ready to Watch";
+                
+                document.getElementById('preview-placeholder').classList.add('hidden');
+                const player = document.getElementById('preview-player');
+                player.classList.remove('hidden');
+                player.play();
+            }, 2000);
+        }
 
-        function switchTab(tab) {
-            ['studio', 'avatar', 'gallery'].forEach(t => {
-                document.getElementById('tab-' + t).classList.add('hidden');
-                document.getElementById('nav-' + t).className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition text-gray-400 hover:text-white hover:bg-dark-700";
-            });
-            document.getElementById('tab-' + tab).classList.remove('hidden');
-            document.getElementById('nav-' + tab).className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition bg-accent-600 text-white shadow-lg shadow-indigo-600/20";
-        }
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const url = URL.createObjectURL(file);
+                const player = document.getElementById('preview-player');
+                player.src = url;
+                document.getElementById('preview-placeholder').classList.add('hidden');
+                player.classList.remove('hidden');
+                
+                const badge = document.getElementById('status-badge');
+                badge.className = "px-2.5 py-0.5 rounded-full text-xs bg-green-500/10 text-green-400 border border-green-500/20 font-medium";
+                badge.textContent = "Uploaded & Ready";
+            }
+        }
 
-        function simulateGeneration(type) {
-            const container = type === 'studio' ? document.getElementById('preview-container') : document.getElementById('avatar-preview-container');
-            container.innerHTML = `
-                <div class="flex flex-col items-center justify-center space-y-3">
-                    <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                    <p class="text-sm font-medium text-gray-300">Rendering AI frames & aligning audio...</p>
-                </div>
-            `;
-            setTimeout(() => {
-                container.innerHTML = `
-                    <div class="w-full h-64 bg-dark-900 rounded-xl border border-dark-600 flex flex-col items-center justify-center relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/30 to-purple-900/30"></div>
-                        <i data-lucide="check-circle" class="w-12 h-12 text-emerald-400 mb-2 relative z-10"></i>
-                        <p class="text-sm font-semibold text-white relative z-10">Render Complete!</p>
-                        <p class="text-xs text-gray-400 relative z-10 mt-1">Ready for export or 4K upscale.</p>
-                        <button class="mt-4 bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-4 py-2 rounded-lg font-medium relative z-10 shadow">Download Video</button>
-                    </div>
-                `;
-                lucide.createIcons();
-            }, 2500);
-        }
-    </script>
-    <!-- Template & Style Options Grid -->
-<div class="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-  <div class="bg-dark-800 border border-dark-700 p-4 rounded-xl cursor-pointer hover:border-accent-500 transition" onclick="selectTemplate('Talking Avatar')">
-    <h4 class="font-bold text-white">🗣️ AI Talking Avatar</h4>
-    <p class="text-sm text-gray-400 mt-1">Realistic presenters reading custom scripts with lip-sync.</p>
-  </div>
-  <div class="bg-dark-800 border border-dark-700 p-4 rounded-xl cursor-pointer hover:border-accent-500 transition" onclick="selectTemplate('Faceless Story')">
-    <h4 class="font-bold text-white">🎬 Faceless Story / Gameplay</h4>
-    <p class="text-sm text-gray-400 mt-1">Cinematic background footage matched with automated voiceovers.</p>
-  </div>
-  <div class="bg-dark-800 border border-dark-700 p-4 rounded-xl cursor-pointer hover:border-accent-500 transition" onclick="selectTemplate('Viral Short')">
-    <h4 class="font-bold text-white">🔥 Viral Short / Clip</h4>
-    <p class="text-sm text-gray-400 mt-1">Auto-captioned short-form video formatted for TikTok & Reels.</p>
-  </div>
-</div>
+        function selectTemplatePreset(name) {
+            document.getElementById('video-prompt').value = "Selected Template: " + name + " - Auto generated script sequence.";
+            switchTab('generate');
+        }
 
-<!-- Example AI Videos Showcase -->
-<div class="mt-8 border-t border-dark-700 pt-6">
-  <h3 class="text-lg font-bold text-white mb-4">Example AI Videos</h3>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div class="bg-dark-800 p-3 rounded-lg border border-dark-700">
-      <div class="bg-dark-900 h-40 rounded flex items-center justify-center text-gray-500 mb-2">[Preview Example 1]</div>
-      <p class="text-xs text-gray-300 mb-2">"Tech Review Short - Pro Narrator"</p>
-      <button onclick="loadExamplePrompt('Tech Review Short')" class="w-full bg-dark-700 hover:bg-accent-500 hover:text-white text-xs py-1.5 rounded transition">Want videos like this? Click here</button>
-    </div>
-    <div class="bg-dark-800 p-3 rounded-lg border border-dark-700">
-      <div class="bg-dark-900 h-40 rounded flex items-center justify-center text-gray-500 mb-2">[Preview Example 2]</div>
-      <p class="text-xs text-gray-300 mb-2">"Motivational Story - Cinematic Style"</p>
-      <button onclick="loadExamplePrompt('Motivational Story')" class="w-full bg-dark-700 hover:bg-accent-500 hover:text-white text-xs py-1.5 rounded transition">Want videos like this? Click here</button>
-    </div>
-  </div>
-</div>
+        function downloadVideo() {
+            const a = document.createElement('a');
+            a.href = 'https://www.w3schools.com/html/mov_bbb.mp4';
+            a.download = 'crayo-generated-video.mp4';
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
 </body>
 </html>
