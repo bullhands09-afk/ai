@@ -220,5 +220,37 @@
             }, 2500);
         }
     </script>
+    <!-- Template & Style Options Grid -->
+<div class="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="bg-dark-800 border border-dark-700 p-4 rounded-xl cursor-pointer hover:border-accent-500 transition" onclick="selectTemplate('Talking Avatar')">
+    <h4 class="font-bold text-white">🗣️ AI Talking Avatar</h4>
+    <p class="text-sm text-gray-400 mt-1">Realistic presenters reading custom scripts with lip-sync.</p>
+  </div>
+  <div class="bg-dark-800 border border-dark-700 p-4 rounded-xl cursor-pointer hover:border-accent-500 transition" onclick="selectTemplate('Faceless Story')">
+    <h4 class="font-bold text-white">🎬 Faceless Story / Gameplay</h4>
+    <p class="text-sm text-gray-400 mt-1">Cinematic background footage matched with automated voiceovers.</p>
+  </div>
+  <div class="bg-dark-800 border border-dark-700 p-4 rounded-xl cursor-pointer hover:border-accent-500 transition" onclick="selectTemplate('Viral Short')">
+    <h4 class="font-bold text-white">🔥 Viral Short / Clip</h4>
+    <p class="text-sm text-gray-400 mt-1">Auto-captioned short-form video formatted for TikTok & Reels.</p>
+  </div>
+</div>
+
+<!-- Example AI Videos Showcase -->
+<div class="mt-8 border-t border-dark-700 pt-6">
+  <h3 class="text-lg font-bold text-white mb-4">Example AI Videos</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="bg-dark-800 p-3 rounded-lg border border-dark-700">
+      <div class="bg-dark-900 h-40 rounded flex items-center justify-center text-gray-500 mb-2">[Preview Example 1]</div>
+      <p class="text-xs text-gray-300 mb-2">"Tech Review Short - Pro Narrator"</p>
+      <button onclick="loadExamplePrompt('Tech Review Short')" class="w-full bg-dark-700 hover:bg-accent-500 hover:text-white text-xs py-1.5 rounded transition">Want videos like this? Click here</button>
+    </div>
+    <div class="bg-dark-800 p-3 rounded-lg border border-dark-700">
+      <div class="bg-dark-900 h-40 rounded flex items-center justify-center text-gray-500 mb-2">[Preview Example 2]</div>
+      <p class="text-xs text-gray-300 mb-2">"Motivational Story - Cinematic Style"</p>
+      <button onclick="loadExamplePrompt('Motivational Story')" class="w-full bg-dark-700 hover:bg-accent-500 hover:text-white text-xs py-1.5 rounded transition">Want videos like this? Click here</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
